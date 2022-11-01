@@ -31,13 +31,12 @@
 #define RAWM 128                     /* Low PC water mark diff (Pages)      */
 #define RING_SIZE 12*1024*1024  
 
-#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
 #define RING_SIZE_PAGES DIV_ROUND_UP(RING_SIZE, 4096) + 1
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
-SETPAGEFLAG(f, arch_1)
-CLEARPAGEFLAG(f, arch_1)
+SETPAGEFLAG(f, arch_1,locked)
+CLEARPAGEFLAG(f, arch_1,locked)
 
 static int major_number;
 static struct class* spindrv_class = NULL;
